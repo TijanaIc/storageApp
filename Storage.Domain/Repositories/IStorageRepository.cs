@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Storage.Domain.Repositories
 {
-    public interface IStorages
+    public interface IStorageRepository
     {
         List<Storages> GetStorages();
         void DeleteStorage(int storageId);

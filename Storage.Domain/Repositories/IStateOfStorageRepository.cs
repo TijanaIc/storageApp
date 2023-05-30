@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Storage.Domain.Repositories
 {
-    public interface IStatesOfStorages
+    public interface IStateOfStorageRepository
     {
-        List<StatesOfStorages> GetStatesOfStorages();
+        List<StateOfStorage> GetStatesOfStorages();
     }
 }

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Storage.Domain.Repositories
 {
-    public interface IProducts
+    public interface IProductRepository
     {
-        List<Products> GetProducts();
+        List<Product> GetProducts();
         void DeleteProduct(int productId);
-        void InsertProduct(Products p);
-        void UpdateProduct(Products p);
+        void InsertProduct(Product p);
+        void UpdateProduct(Product p);
     }
 }

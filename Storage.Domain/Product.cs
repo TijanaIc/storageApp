@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Storage.Domain
 {
-    public class StatesOfStorages
+    public class Product
     {
-        public int StateOfStorageId { get; set; }
         public int ProductId { get; set; }
-        public int StorageId { get; set; }
-        public int Quantity { get; set; }
+        public string? NameOfProduct { get; set; }
+        public double Cost { get; set; }
     }
 }
