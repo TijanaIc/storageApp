@@ -22,5 +22,12 @@ namespace Storage.Api.Controllers
             var stateOfStorages = _stateOfStorageRepository.GetList();
             return stateOfStorages;
         }
+
+        [HttpGet("search-by-id/{id}")]
+        public StateOfStorage GetById(int id)
+        {
+            var stateOfStorages = _stateOfStorageRepository.GetById(id);
+            return stateOfStorages;
+        }
     }
 }

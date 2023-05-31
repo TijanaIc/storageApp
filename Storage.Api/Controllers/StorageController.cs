@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Storage.Domain;
 using Storage.Domain.Repositories;
 
 namespace Storage.Api.Controllers
@@ -18,6 +19,13 @@ namespace Storage.Api.Controllers
         public List<Domain.Storage> Get()
         {
             var storages = _storageRepository.GetList();
+            return storages;
+        }
+
+        [HttpGet("search-by-id/{id}")]
+        public Domain.Storage GetById(int id)
+        {
+            var storages = _storageRepository.GetById(id);
             return storages;
         }
     }

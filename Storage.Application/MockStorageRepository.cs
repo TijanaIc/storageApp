@@ -1,4 +1,5 @@
-﻿using Storage.Domain.Repositories;
+﻿using Storage.Domain;
+using Storage.Domain.Repositories;
 
 namespace Storage.Application
 {
@@ -22,6 +23,13 @@ namespace Storage.Application
             storages.Add(s1);
             storages.Add(s2);
             return storages;
+        }
+
+        public Domain.Storage GetById(int id)
+        {
+            var s = new Domain.Storage();
+            s.StorageId = 1;
+            return s;
         }
     }
 }

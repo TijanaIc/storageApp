@@ -26,5 +26,12 @@ namespace Storage.Application
             stateOfStorages.Add(st2);
             return stateOfStorages;
         }
+
+        public StateOfStorage GetById(int id)
+        {
+            var st = new StateOfStorage();
+            st.StateOfStorageId = 1;
+            return st;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Storage.Domain;
 using Storage.Domain.Repositories;
+using System.Numerics;
 
 namespace Storage.Application
 {
@@ -24,5 +25,17 @@ namespace Storage.Application
             products.Add(p2);
             return products;
         }
+
+        public Product GetById(int id)
+        {
+            var p = new Product();
+            p.ProductId = 1;
+            return p; 
+        }
+
+        //public void Insert(Product p)
+        //{
+
+        //}
     }
 }
