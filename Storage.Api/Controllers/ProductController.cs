@@ -29,5 +29,11 @@ namespace Storage.Api.Controllers
             var products = _productRepository.GetById(id);
             return products;
         }
+
+        [HttpDelete("delete-by-id/{id}")]
+        public void Delete(int id)
+        {
+            _productRepository.DeleteById(id);
+        }
     }
 }

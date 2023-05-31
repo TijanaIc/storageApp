@@ -29,5 +29,11 @@ namespace Storage.Api.Controllers
             var stateOfStorages = _stateOfStorageRepository.GetById(id);
             return stateOfStorages;
         }
+
+        [HttpDelete("delete-by-id/{id}")]
+        public void DeleteById(int id)
+        {
+            _stateOfStorageRepository.DeleteById(id);
+        }
     }
 }

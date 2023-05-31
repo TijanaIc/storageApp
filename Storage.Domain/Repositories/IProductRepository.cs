@@ -6,7 +6,7 @@ namespace Storage.Domain.Repositories
     {
         List<Product> GetList();
         Product GetById(int id);
-        //void Delete(int id);
+        void DeleteById(int id);
         //void Insert(Product p);
         //void Update(Product p);
     }

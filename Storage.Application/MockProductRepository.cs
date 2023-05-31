@@ -33,9 +33,9 @@ namespace Storage.Application
             return p; 
         }
 
-        //public void Insert(Product p)
-        //{
-
-        //}
+        public void DeleteById(int id)
+        {
+            
+        }
     }
 }

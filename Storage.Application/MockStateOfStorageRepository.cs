@@ -33,5 +33,10 @@ namespace Storage.Application
             st.StateOfStorageId = 1;
             return st;
         }
+
+        public void DeleteById(int id)
+        {
+
+        }
     }
 }

@@ -28,5 +28,11 @@ namespace Storage.Api.Controllers
             var storages = _storageRepository.GetById(id);
             return storages;
         }
+
+        [HttpDelete("delete-by-id/{id}")]
+        public void DeleteById(int id)
+        {
+            _storageRepository.DeleteById(id);
+        }
     }
 }
