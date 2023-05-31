@@ -38,5 +38,10 @@ namespace Storage.Application
         {
 
         }
+
+        public void Update(StateOfStorage st)
+        {
+
+        }
     }
 }

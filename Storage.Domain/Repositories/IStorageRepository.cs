@@ -6,6 +6,6 @@
         Storage GetById(int id);
         void DeleteById(int id);
         //void Insert(Storage s);
-        //void Update(Storage s);
+        void Update(Storage s);
     }
 }

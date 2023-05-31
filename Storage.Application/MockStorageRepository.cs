@@ -36,5 +36,10 @@ namespace Storage.Application
         {
 
         }
+
+        public void Update(Domain.Storage s)
+        {
+
+        }
     }
 }

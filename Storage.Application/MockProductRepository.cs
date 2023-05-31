@@ -37,5 +37,10 @@ namespace Storage.Application
         {
             
         }
+
+        public void Update(Product p)
+        {
+
+        }
     }
 }

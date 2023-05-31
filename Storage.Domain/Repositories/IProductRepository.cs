@@ -8,6 +8,6 @@ namespace Storage.Domain.Repositories
         Product GetById(int id);
         void DeleteById(int id);
         //void Insert(Product p);
-        //void Update(Product p);
+        void Update(Product p);
     }
 }

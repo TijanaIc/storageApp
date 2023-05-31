@@ -6,6 +6,6 @@
         StateOfStorage GetById(int id);
         void DeleteById(int id);
         //void Insert(StateOfStorage st);
-        //void Update(StateOfStorage st);
+        void Update(StateOfStorage st);
     }
 }

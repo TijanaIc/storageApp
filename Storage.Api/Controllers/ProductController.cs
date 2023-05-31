@@ -35,5 +35,11 @@ namespace Storage.Api.Controllers
         {
             _productRepository.DeleteById(id);
         }
+
+        [HttpDelete("update")]
+        public void Update(Product p)
+        {
+            _productRepository.Update(p);
+        }
     }
 }
