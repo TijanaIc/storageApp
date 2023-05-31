@@ -9,18 +9,16 @@ namespace Storage.Api.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
-        private readonly ILogger<ProductController> _logger;
 
-        public ProductController(IProductRepository productRepository,ILogger<ProductController> logger)
+        public ProductController(IProductRepository productRepository)
         {
             _productRepository = productRepository;
-            _logger = logger;
         }
 
         [HttpGet("list")]
         public List<Product> Get()
         {
-            var products = _productRepository.GetProducts();
+            var products = _productRepository.GetList();
             return products;
         }
     }

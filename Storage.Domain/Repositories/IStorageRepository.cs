@@ -2,6 +2,6 @@
 {
     public interface IStorageRepository
     {
-        List<Storages> GetStorages();
+        List<Storage> GetList();
     }
 }

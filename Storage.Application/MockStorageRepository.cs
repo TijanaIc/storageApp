@@ -9,9 +9,9 @@ namespace Storage.Application
         {
 
         }
-        public List<Storages> GetStorages()
+        public List<Domain.Storage> GetList()
         {
-            var storages = new List<Storages>();
+            var storages = new List<Domain.Storage>();
             return storages;
         }
     }

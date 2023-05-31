@@ -9,7 +9,7 @@ namespace Storage.Application
         {
 
         }
-        public List<StateOfStorage> GetStatesOfStorages()
+        public List<StateOfStorage> GetList()
         {
             var stateOfStorages = new List<StateOfStorage>();
             return stateOfStorages;

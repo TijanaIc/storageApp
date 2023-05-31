@@ -2,6 +2,6 @@
 {
     public interface IStateOfStorageRepository
     {
-        List<StateOfStorage> GetStatesOfStorages();
+        List<StateOfStorage> GetList();
     }
 }

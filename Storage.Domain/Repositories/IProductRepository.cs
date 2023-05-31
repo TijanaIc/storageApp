@@ -2,6 +2,6 @@
 {
     public interface IProductRepository
     {
-        List<Product> GetProducts();
+        List<Product> GetList();
     }
 }

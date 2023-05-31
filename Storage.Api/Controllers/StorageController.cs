@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Storage.Domain;
 using Storage.Domain.Repositories;
 
 namespace Storage.Api.Controllers
@@ -9,18 +8,16 @@ namespace Storage.Api.Controllers
     public class StorageController : ControllerBase
     {
         private readonly IStorageRepository _storageRepository;
-        private readonly ILogger<StorageController> _logger;
 
-        public StorageController(IStorageRepository storageRepository, ILogger<StorageController> logger)
+        public StorageController(IStorageRepository storageRepository)
         {
             _storageRepository = storageRepository;
-            _logger = logger;
         }
 
         [HttpGet("list")]
-        public List<Storages> Get()
+        public List<Domain.Storage> Get()
         {
-            var storages = _storageRepository.GetStorages();
+            var storages = _storageRepository.GetList();
             return storages;
         }
     }

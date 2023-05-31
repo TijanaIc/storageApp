@@ -10,18 +10,16 @@ namespace Storage.Api.Controllers
     public class StateOfStorageController : ControllerBase
     {
         private readonly IStateOfStorageRepository _stateOfStorageRepository;
-        private readonly ILogger<StateOfStorageController> _logger;
 
-        public StateOfStorageController(IStateOfStorageRepository stateOfStorageRepository, ILogger<StateOfStorageController> logger)
+        public StateOfStorageController(IStateOfStorageRepository stateOfStorageRepository)
         {
             _stateOfStorageRepository = stateOfStorageRepository;
-            _logger = logger;
         }
 
         [HttpGet("list")]
         public List<StateOfStorage> Get()
         {
-            var stateOfStorages = _stateOfStorageRepository.GetStatesOfStorages();
+            var stateOfStorages = _stateOfStorageRepository.GetList();
             return stateOfStorages;
         }
     }
