@@ -5,7 +5,7 @@
         List<StateOfStorage> GetList();
         StateOfStorage GetById(int id);
         void DeleteById(int id);
-        //void Insert(StateOfStorage st);
         void Update(StateOfStorage st);
+        StateOfStorage Insert(StateOfStorage st);
     }
 }

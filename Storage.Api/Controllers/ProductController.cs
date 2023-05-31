@@ -36,10 +36,17 @@ namespace Storage.Api.Controllers
             _productRepository.DeleteById(id);
         }
 
-        [HttpDelete("update")]
+        [HttpPut("update")]
         public void Update(Product p)
         {
             _productRepository.Update(p);
+        }
+
+        [HttpPost("insert")]
+        public Product Insert(Product p)
+        {
+            var products = _productRepository.Insert(p);
+            return products;
         }
     }
 }

@@ -36,10 +36,17 @@ namespace Storage.Api.Controllers
             _stateOfStorageRepository.DeleteById(id);
         }
 
-        [HttpDelete("update")]
+        [HttpPut("update")]
         public void Update(StateOfStorage st)
         {
             _stateOfStorageRepository.Update(st);
+        }
+
+        [HttpPost("insert")]
+        public StateOfStorage Insert(StateOfStorage st)
+        {
+            var stateOfStorages = _stateOfStorageRepository.Insert(st);
+            return stateOfStorages;
         }
     }
 }

@@ -35,10 +35,17 @@ namespace Storage.Api.Controllers
             _storageRepository.DeleteById(id);
         }
 
-        [HttpDelete("update")]
+        [HttpPut("update")]
         public void Update(Domain.Storage s)
         {
             _storageRepository.Update(s);
+        }
+
+        [HttpPost("insert")]
+        public Domain.Storage Insert(Domain.Storage s)
+        {
+            var storages = _storageRepository.Insert(s);
+            return storages;
         }
     }
 }
