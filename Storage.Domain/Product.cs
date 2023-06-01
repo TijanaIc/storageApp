@@ -4,6 +4,6 @@
     {
         public int ProductId { get; set; }
         public string? NameOfProduct { get; set; }
-        public double Cost { get; set; }
+        public decimal Cost { get; set; }
     }
 }
