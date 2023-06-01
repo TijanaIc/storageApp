@@ -1,9 +1,7 @@
 ﻿using Storage.Domain;
 using Storage.Domain.Repositories;
-using System.Numerics;
-using System.Security.Cryptography;
 
-namespace Storage.Application
+namespace Storage.Application.Repositories
 {
     public class MockProductRepository : IProductRepository
     {
@@ -26,29 +24,24 @@ namespace Storage.Application
             products.Add(p2);
             return products;
         }
-
         public Product GetById(int id)
         {
             var p = new Product();
             p.ProductId = 1;
-            return p; 
+            return p;
         }
-
         public void DeleteById(int id)
         {
-            
-        }
 
+        }
         public void Update(Product p)
         {
 
         }
-
         public Product Insert(Product p)
         {
             p.ProductId = 232;
             return p;
-
         }
     }
 }

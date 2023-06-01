@@ -1,7 +1,6 @@
-﻿using Storage.Domain;
-using Storage.Domain.Repositories;
+﻿using Storage.Domain.Repositories;
 
-namespace Storage.Application
+namespace Storage.Application.Repositories
 {
     public class MockStorageRepository : IStorageRepository
     {
@@ -24,29 +23,24 @@ namespace Storage.Application
             storages.Add(s2);
             return storages;
         }
-
         public Domain.Storage GetById(int id)
         {
             var s = new Domain.Storage();
             s.StorageId = 1;
             return s;
         }
-
         public void DeleteById(int id)
         {
 
         }
-
         public void Update(Domain.Storage s)
         {
 
         }
-
         public Domain.Storage Insert(Domain.Storage s)
         {
             s.StorageId = 232;
             return s;
-
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Numerics;
-
-namespace Storage.Domain.Repositories
+﻿namespace Storage.Domain.Repositories
 {
     public interface IProductRepository
     {

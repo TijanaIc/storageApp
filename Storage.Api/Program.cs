@@ -1,4 +1,4 @@
-using Storage.Application;
+using Storage.Application.Repositories;
 using Storage.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IStorageRepository, MockStorageRepository>();
-builder.Services.AddScoped<IStateOfStorageRepository, MockStateOfStorageRepository>();
+builder.Services.AddScoped<IStorageRepository, StorageRepository>();
+builder.Services.AddScoped<IStateOfStorageRepository, StateOfStorageRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

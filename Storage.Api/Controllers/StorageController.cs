@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Storage.Domain;
 using Storage.Domain.Repositories;
 
 namespace Storage.Api.Controllers

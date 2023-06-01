@@ -1,7 +1,7 @@
 ﻿using Storage.Domain;
 using Storage.Domain.Repositories;
 
-namespace Storage.Application
+namespace Storage.Application.Repositories
 {
     public class MockStateOfStorageRepository : IStateOfStorageRepository
     {
@@ -26,24 +26,20 @@ namespace Storage.Application
             stateOfStorages.Add(st2);
             return stateOfStorages;
         }
-
         public StateOfStorage GetById(int id)
         {
             var st = new StateOfStorage();
             st.StateOfStorageId = 1;
             return st;
         }
-
         public void DeleteById(int id)
         {
 
         }
-
         public void Update(StateOfStorage st)
         {
 
         }
-
         public StateOfStorage Insert(StateOfStorage st)
         {
             st.StateOfStorageId = 232;
