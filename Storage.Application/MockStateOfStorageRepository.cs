@@ -46,12 +46,8 @@ namespace Storage.Application
 
         public StateOfStorage Insert(StateOfStorage st)
         {
-            var st1 = new StateOfStorage();
-            st1.ProductId = 4;
-            st1.StorageId = 4;
-            var products = new List<StateOfStorage>();
-            products.Add(st1);
-            return st1;
+            st.StateOfStorageId = 232;
+            return st;
         }
     }
 }

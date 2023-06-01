@@ -46,12 +46,8 @@ namespace Storage.Application
 
         public Product Insert(Product p)
         {
-            var p1 = new Product();
-            p1.NameOfProduct = "Test3";
-            p1.Cost = 1;
-            var products = new List<Product>();
-            products.Add(p1);
-            return p1;
+            p.ProductId = 232;
+            return p;
 
         }
     }

@@ -44,12 +44,8 @@ namespace Storage.Application
 
         public Domain.Storage Insert(Domain.Storage s)
         {
-            var s1 = new Domain.Storage();
-            s1.NameOfStorage = "test3";
-            s1.KindOfStorage = "c";
-            var products = new List<Domain.Storage>();
-            products.Add(s1);
-            return s1;
+            s.StorageId = 232;
+            return s;
 
         }
     }
