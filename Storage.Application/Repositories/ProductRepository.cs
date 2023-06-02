@@ -25,21 +25,38 @@ namespace Storage.Application.Repositories
         {
             using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
             {
-                var product = connection.QuerySingleOrDefault<Product>($"select * from dbo.Product where ProductId = '{id}'");
+                var product = connection.QuerySingleOrDefault<Product>($"select * from dbo.Product where ProductId = {id}");
                 return product;
             }
         }
         public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var sqlDeleteStateOfStorage = $"delete from dbo.StateOfStorage where ProductId = {id}";
+            var sqlDeleteProduct = $"delete from dbo.Product where ProductId={id}";
+            
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                connection.Execute(sqlDeleteStateOfStorage);
+                connection.Execute(sqlDeleteProduct);
+            }
         }
-        public Product Insert(Product p)
+        public void Update(Product product)
         {
-            throw new NotImplementedException();
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                var sql = $"update dbo.Product set NameOfProduct = @NameOfProduct, Cost = @Cost where ProductId = @ProductId";
+                var rowsAffected = connection.Execute(sql, product);
+            }
         }
-        public void Update(Product p)
+
+        public Product Insert(Product product)
         {
-            throw new NotImplementedException();
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                var sql = "insert into dbo.Product (NameOfProduct, Cost) values (@NameOfProduct, @Cost)";
+                var rowsAffected = connection.Execute(sql, product);
+                return product;
+            }
         }
     }
 }
