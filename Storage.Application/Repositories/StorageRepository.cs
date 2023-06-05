@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using Microsoft.Extensions.Configuration;
+using Storage.Domain;
 using Storage.Domain.Repositories;
 
 namespace Storage.Application.Repositories
@@ -30,15 +31,31 @@ namespace Storage.Application.Repositories
         }
         public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var sqlDeleteStateOfStorage = $"delete from dbo.StateOfStorage where StorageId = {id}";
+            var sqlDeleteStorage = $"delete from dbo.Storage where StorageId={id}";
+
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                connection.Execute(sqlDeleteStateOfStorage);
+                connection.Execute(sqlDeleteStorage);
+            }
         }
-        public void Update(Domain.Storage s)
+        public void Update(Domain.Storage storage)
         {
-            throw new NotImplementedException();
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                var sql = $"update dbo.Storage set NameOfStorage = @NameOfStorage, KindOfStorage = @KindOfStorage where StorageId = @StorageId";
+                var rowsAffected = connection.Execute(sql, storage);
+            }
         }
-        public Domain.Storage Insert(Domain.Storage s)
+        public Domain.Storage Insert(Domain.Storage storage)
         {
-            throw new NotImplementedException();
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                var sql = "insert into dbo.Storage (NameOfStorage, KindOfStorage) values (@NameOfStorage, @KindOfStorage)";
+                var rowsAffected = connection.Execute(sql, storage);
+                return storage;
+            }
         }        
     }
 }

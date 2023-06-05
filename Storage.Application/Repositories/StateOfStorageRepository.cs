@@ -31,15 +31,29 @@ namespace Storage.Application.Repositories
         }
         public void DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var sqlDeleteStateOfStorage = $"delete from dbo.StateOfStorage where StateOfStorageId = {id}";
+
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                connection.Execute(sqlDeleteStateOfStorage);
+            }
         }
-        public void Update(StateOfStorage st)
+        public void Update(StateOfStorage stateOfStorage)
         {
-            throw new NotImplementedException();
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                var sql = $"update dbo.StateOfStorage set ProductId = @ProductId, StorageId = @StorageId, Quantity = @Quantity where StateOfStorageId = @StateOfStorageId";
+                var rowsAffected = connection.Execute(sql, stateOfStorage);
+            }
         }
-        public StateOfStorage Insert(StateOfStorage st)
+        public StateOfStorage Insert(StateOfStorage stateOfStorage)
         {
-            throw new NotImplementedException();
+            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            {
+                var sqlInsertStateOfStorage = "insert into dbo.StateOfStorage (ProductId, StorageId, Quantity) values (@ProductId, @StorageId, @Quantity)";
+                var rowsAffected = connection.Execute(sqlInsertStateOfStorage, stateOfStorage);
+                return stateOfStorage;
+            }
         }        
     }
 }
