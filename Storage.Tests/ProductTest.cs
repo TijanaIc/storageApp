@@ -21,4 +21,13 @@ public class ProductTest
         Assert.NotNull(products);
         Assert.True(10 == products.Count());
     }
+
+    [Fact]
+    public async Task GetProductById_Test()
+    {
+        var httpClient = _factory.CreateDefaultClient();
+        var product = await httpClient.GetFromJsonAsync<Product>("/api/product/search-by-id/3");
+        Assert.NotNull(product);
+        Assert.True(3 == product.ProductId);
+    }
 }
