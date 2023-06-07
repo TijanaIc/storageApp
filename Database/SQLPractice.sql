@@ -86,6 +86,11 @@ inner join dbo.Storage s on s.StorageId=ss.StorageId
 where KindOfStorage='Vegetable';
 
 
+select * from dbo.Product, dbo.StateOfStorage, dbo.Storage
+where dbo.Product.ProductId=dbo.StateOfStorage.ProductId and dbo.Storage.StorageId=dbo.StateOfStorage.StorageId;
+
+
+
 
 
 

@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IStorageRepository, StorageRepository>();
 builder.Services.AddScoped<IStateOfStorageRepository, StateOfStorageRepository>();
+builder.Services.AddScoped<IProductFilterRepository, ProductFilterRepository>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

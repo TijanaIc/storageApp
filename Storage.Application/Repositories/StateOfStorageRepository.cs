@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Storage.Domain;
 using Storage.Domain.Repositories;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Storage.Application.Repositories
 {
@@ -31,29 +33,56 @@ namespace Storage.Application.Repositories
         }
         public void DeleteById(int id)
         {
-            var sqlDeleteStateOfStorage = $"delete from dbo.StateOfStorage where StateOfStorageId = {id}";
-
-            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            var sqlDeleteStateOfStorage = $"delete from dbo.StateOfStorage where StateOfStorageId = @StateOfStorageId";
+            using var connection = new SqlConnection(_connectionString);
+            connection.Open();
+            SqlCommand command;
+            using var transaction = connection.BeginTransaction();
+            try
             {
-                connection.Execute(sqlDeleteStateOfStorage);
+                command = new SqlCommand(sqlDeleteStateOfStorage, connection, transaction);
+                command.Parameters.Add("@StateOfStorageId", SqlDbType.Int).Value = id;
+                command.ExecuteNonQuery();
+                command.Dispose();
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
             }
         }
         public void Update(StateOfStorage stateOfStorage)
         {
-            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            var sql = "update dbo.StateOfStorage set ProductId = @ProductId, StorageId = @StorageId, Quantity = @Quantity where StateOfStorageId = @StateOfStorageId";
+            using var connection = new SqlConnection(_connectionString);
+            connection.Open();
+            using var transaction = connection.BeginTransaction();
+            try
             {
-                var sql = $"update dbo.StateOfStorage set ProductId = @ProductId, StorageId = @StorageId, Quantity = @Quantity where StateOfStorageId = @StateOfStorageId";
-                var rowsAffected = connection.Execute(sql, stateOfStorage);
+                var rowsAffected = connection.Execute(sql, stateOfStorage, transaction);
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
             }
         }
         public StateOfStorage Insert(StateOfStorage stateOfStorage)
         {
-            using (var connection = new System.Data.SqlClient.SqlConnection(_connectionString))
+            var sqlInsertStateOfStorage = "insert into dbo.StateOfStorage (ProductId, StorageId, Quantity) values (@ProductId, @StorageId, @Quantity)";
+            using var connection = new SqlConnection(_connectionString);
+            connection.Open();
+            using var transaction = connection.BeginTransaction();
+            try
             {
-                var sqlInsertStateOfStorage = "insert into dbo.StateOfStorage (ProductId, StorageId, Quantity) values (@ProductId, @StorageId, @Quantity)";
-                var rowsAffected = connection.Execute(sqlInsertStateOfStorage, stateOfStorage);
-                return stateOfStorage;
+                var rowsAffected = connection.Execute(sqlInsertStateOfStorage, stateOfStorage, transaction);
+                transaction.Commit();
             }
+            catch
+            {
+                transaction.Rollback();
+            }
+            return stateOfStorage;
         }        
     }
 }
