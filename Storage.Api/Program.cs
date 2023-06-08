@@ -1,4 +1,6 @@
+using Storage.Application.BusinessLayer;
 using Storage.Application.Repositories;
+using Storage.Domain.BusnessLayer;
 using Storage.Domain.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IStorageRepository, StorageRepository>();
 builder.Services.AddScoped<IStateOfStorageRepository, StateOfStorageRepository>();
-builder.Services.AddScoped<IProductFilterRepository, ProductFilterRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IStorageService, StorageService>();
+builder.Services.AddScoped<IStateOfStorageService, StateOfStorageService>();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

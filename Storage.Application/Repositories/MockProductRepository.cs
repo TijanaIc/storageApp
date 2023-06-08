@@ -43,5 +43,10 @@ namespace Storage.Application.Repositories
             p.ProductId = 232;
             return p;
         }
+
+        public List<Product> GetList(ProductFilter filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

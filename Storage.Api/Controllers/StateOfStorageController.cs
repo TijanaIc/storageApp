@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Storage.Domain.Repositories;
 using Storage.Domain;
+using Storage.Domain.BusnessLayer;
 
 namespace Storage.Api.Controllers
 {
@@ -8,43 +8,43 @@ namespace Storage.Api.Controllers
     [ApiController]
     public class StateOfStorageController : ControllerBase
     {
-        private readonly IStateOfStorageRepository _stateOfStorageRepository;
+        private readonly IStateOfStorageService _stateOfStorageService;
 
-        public StateOfStorageController(IStateOfStorageRepository stateOfStorageRepository)
+        public StateOfStorageController(IStateOfStorageService stateOfStorageService)
         {
-            _stateOfStorageRepository = stateOfStorageRepository;
+            _stateOfStorageService = stateOfStorageService;
         }
 
         [HttpGet("list")]
         public List<StateOfStorage> Get()
         {
-            var stateOfStorages = _stateOfStorageRepository.GetList();
+            var stateOfStorages = _stateOfStorageService.GetStateOfStorageList();
             return stateOfStorages;
         }
 
         [HttpGet("search-by-id/{id}")]
         public StateOfStorage GetById(int id)
         {
-            var stateOfStorages = _stateOfStorageRepository.GetById(id);
+            var stateOfStorages = _stateOfStorageService.GetStateOfStorageById(id);
             return stateOfStorages;
         }
 
         [HttpDelete("delete-by-id/{id}")]
         public void DeleteById(int id)
         {
-            _stateOfStorageRepository.DeleteById(id);
+            _stateOfStorageService.DeleteStateOfStorageById(id);
         }
 
         [HttpPut("update")]
         public void Update(StateOfStorage st)
         {
-            _stateOfStorageRepository.Update(st);
+            _stateOfStorageService.UpdateStateOfStorage(st);
         }
 
         [HttpPost("insert")]
         public StateOfStorage Insert(StateOfStorage st)
         {
-            var stateOfStorages = _stateOfStorageRepository.Insert(st);
+            var stateOfStorages = _stateOfStorageService.InsertStateOfStorage(st);
             return stateOfStorages;
         }
     }

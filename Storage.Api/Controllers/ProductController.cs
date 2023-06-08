@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Storage.Domain;
-using Storage.Domain.Repositories;
+using Storage.Domain.BusnessLayer;
 
 namespace Storage.Api.Controllers
 {
@@ -8,43 +8,50 @@ namespace Storage.Api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
+        private readonly IProductService _productService;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductService productService)
         {
-            _productRepository = productRepository;
+            _productService = productService;
         }
 
         [HttpGet("list")]
         public List<Product> Get()
         {
-            var products = _productRepository.GetList();
+            var products = _productService.GetProductList();
             return products;
         }
 
         [HttpGet("search-by-id/{id}")]
         public Product GetById(int id)
         {
-            var products = _productRepository.GetById(id);
+            var products = _productService.GetProductById(id);
             return products;
         }
 
         [HttpDelete("delete-by-id/{id}")]
         public void Delete(int id)
         {
-            _productRepository.DeleteById(id);
+            _productService.DeleteProductById(id);
         }
 
         [HttpPut("update")]
         public void Update(Product p)
         {
-            _productRepository.Update(p);
+            _productService.UpdateProduct(p);
         }
 
         [HttpPost("insert")]
         public Product Insert(Product p)
         {
-            var products = _productRepository.Insert(p);
+            var products = _productService.InsertProduct(p);
+            return products;
+        }
+
+        [HttpPost("search")]
+        public List<Product> SearchProducts(ProductFilter filter)
+        {
+            var products = _productService.SearchProducts(filter);
             return products;
         }
     }

@@ -29,6 +29,16 @@ namespace Storage.Application.Repositories
             var product = connection.QuerySingleOrDefault<Product>($"select * from dbo.Product where ProductId = {id}");
             return product;
         }
+
+        public List<Product> GetList(ProductFilter filter)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var products = connection.Query<Product>($"select * from Product where NameOfProduct like '{filter.NameOfProduct}%' and Cost>{filter.Cost}")
+                                         .ToList();
+                return products;
+            }
+        }
         public void DeleteById(int id)
         {
             var sqlDeleteStateOfStorage = "delete from dbo.StateOfStorage where ProductId = @ProductId";
