@@ -16,33 +16,33 @@ namespace Storage.Api.Controllers
         [HttpGet("list")]
         public List<Domain.Storage> Get()
         {
-            var storages = _storageService.GetStorageList();
+            var storages = _storageService.GetList();
             return storages;
         }
 
         [HttpGet("search-by-id/{id}")]
         public Domain.Storage GetById(int id)
         {
-            var storages = _storageService.GetStorageById(id);
+            var storages = _storageService.GetById(id);
             return storages;
         }
 
         [HttpDelete("delete-by-id/{id}")]
         public void DeleteById(int id)
         {
-            _storageService.DeleteStorageById(id);
+            _storageService.DeleteById(id);
         }
 
         [HttpPut("update")]
         public void Update(Domain.Storage s)
         {
-            _storageService.UpdateStorage(s);
+            _storageService.Update(s);
         }
 
         [HttpPost("insert")]
         public Domain.Storage Insert(Domain.Storage s)
         {
-            var storages = _storageService.InsertStorage(s);
+            var storages = _storageService.Insert(s);
             return storages;
         }
     }

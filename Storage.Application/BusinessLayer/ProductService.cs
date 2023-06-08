@@ -13,30 +13,30 @@ namespace Storage.Application.BusinessLayer
             _productRepository = productRepository;
         }
 
-        public List<Product> GetProductList()
+        public List<Product> GetList()
         {
             var result = _productRepository.GetList();
             return result;
         }
-        public Product GetProductById(int id)
+        public Product GetById(int id)
         {
             var result = _productRepository.GetById(id);
             return result;
         }
-        public void DeleteProductById(int id)
+        public void DeleteById(int id)
         {
             _productRepository.DeleteById(id);
         }
-        public void UpdateProduct(Product p)
+        public void Update(Product p)
         {
             _productRepository.Update(p);
         }
-        public Product InsertProduct(Product p)
+        public Product Insert(Product p)
         {
             var result = _productRepository.Insert(p);
             return result;
         }
-        public List<Product> SearchProducts(ProductFilter filter)
+        public List<Product> Search(ProductFilter filter)
         {
             var products = _productRepository.GetList(filter);
             return products;

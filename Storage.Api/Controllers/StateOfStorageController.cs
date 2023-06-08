@@ -18,33 +18,33 @@ namespace Storage.Api.Controllers
         [HttpGet("list")]
         public List<StateOfStorage> Get()
         {
-            var stateOfStorages = _stateOfStorageService.GetStateOfStorageList();
+            var stateOfStorages = _stateOfStorageService.GetList();
             return stateOfStorages;
         }
 
         [HttpGet("search-by-id/{id}")]
         public StateOfStorage GetById(int id)
         {
-            var stateOfStorages = _stateOfStorageService.GetStateOfStorageById(id);
+            var stateOfStorages = _stateOfStorageService.GetById(id);
             return stateOfStorages;
         }
 
         [HttpDelete("delete-by-id/{id}")]
         public void DeleteById(int id)
         {
-            _stateOfStorageService.DeleteStateOfStorageById(id);
+            _stateOfStorageService.DeleteId(id);
         }
 
         [HttpPut("update")]
         public void Update(StateOfStorage st)
         {
-            _stateOfStorageService.UpdateStateOfStorage(st);
+            _stateOfStorageService.Update(st);
         }
 
         [HttpPost("insert")]
         public StateOfStorage Insert(StateOfStorage st)
         {
-            var stateOfStorages = _stateOfStorageService.InsertStateOfStorage(st);
+            var stateOfStorages = _stateOfStorageService.Insert(st);
             return stateOfStorages;
         }
     }

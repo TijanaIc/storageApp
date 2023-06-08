@@ -13,25 +13,25 @@ namespace Storage.Application.BusinessLayer
             _stateOfStorageRepository = stateOfStorageRepository;
         }
 
-        public List<StateOfStorage> GetStateOfStorageList()
+        public List<StateOfStorage> GetList()
         {
             var result = _stateOfStorageRepository.GetList();
             return result;
         }
-        public StateOfStorage GetStateOfStorageById(int id)
+        public StateOfStorage GetById(int id)
         {
             var result = _stateOfStorageRepository.GetById(id);
             return result;
         }
-        public void DeleteStateOfStorageById(int id)
+        public void DeleteId(int id)
         {
             _stateOfStorageRepository.DeleteById(id);
         }
-        public void UpdateStateOfStorage(StateOfStorage st)
+        public void Update(StateOfStorage st)
         {
             _stateOfStorageRepository.Update(st);
         }
-        public StateOfStorage InsertStateOfStorage(StateOfStorage st)
+        public StateOfStorage Insert(StateOfStorage st)
         {
             var result = _stateOfStorageRepository.Insert(st);
             return result;

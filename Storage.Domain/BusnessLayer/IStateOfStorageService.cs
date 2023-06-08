@@ -2,10 +2,10 @@
 {
     public interface IStateOfStorageService
     {
-        List<StateOfStorage> GetStateOfStorageList();
-        StateOfStorage GetStateOfStorageById(int id);
-        void DeleteStateOfStorageById(int id);
-        void UpdateStateOfStorage(StateOfStorage st);
-        StateOfStorage InsertStateOfStorage(StateOfStorage st);
+        List<StateOfStorage> GetList();
+        StateOfStorage GetById(int id);
+        void DeleteId(int id);
+        void Update(StateOfStorage st);
+        StateOfStorage Insert(StateOfStorage st);
     }
 }

@@ -2,11 +2,11 @@
 {
     public interface IProductService
     {
-        List<Product> SearchProducts(ProductFilter filter);
-        List<Product> GetProductList();
-        Product GetProductById(int id);
-        void DeleteProductById(int id);
-        void UpdateProduct(Product p);
-        Product InsertProduct(Product p);
+        List<Product> Search(ProductFilter filter);
+        List<Product> GetList();
+        Product GetById(int id);
+        void DeleteById(int id);
+        void Update(Product p);
+        Product Insert(Product p);
     }
 }

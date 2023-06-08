@@ -18,40 +18,40 @@ namespace Storage.Api.Controllers
         [HttpGet("list")]
         public List<Product> Get()
         {
-            var products = _productService.GetProductList();
+            var products = _productService.GetList();
             return products;
         }
 
         [HttpGet("search-by-id/{id}")]
         public Product GetById(int id)
         {
-            var products = _productService.GetProductById(id);
+            var products = _productService.GetById(id);
             return products;
         }
 
         [HttpDelete("delete-by-id/{id}")]
         public void Delete(int id)
         {
-            _productService.DeleteProductById(id);
+            _productService.DeleteById(id);
         }
 
         [HttpPut("update")]
         public void Update(Product p)
         {
-            _productService.UpdateProduct(p);
+            _productService.Update(p);
         }
 
         [HttpPost("insert")]
         public Product Insert(Product p)
         {
-            var products = _productService.InsertProduct(p);
+            var products = _productService.Insert(p);
             return products;
         }
 
         [HttpPost("search")]
         public List<Product> SearchProducts(ProductFilter filter)
         {
-            var products = _productService.SearchProducts(filter);
+            var products = _productService.Search(filter);
             return products;
         }
     }
